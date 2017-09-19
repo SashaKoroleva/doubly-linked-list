@@ -16,7 +16,7 @@ class LinkedList {
       }
       else{
         this.tail.next = node;
-        node.previous = this.tail;
+        node.prev = this.tail;
         this.tail = node;
       }
       this.length++;
@@ -53,10 +53,11 @@ class LinkedList {
       this.tail = null;
       this.length = 0;
        return this;
-
     }
 
-    deleteAt(index) {}
+    deleteAt(index) {
+
+    }
 
     reverse() {}
 
