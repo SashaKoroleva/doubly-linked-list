@@ -2,8 +2,8 @@ const Node = require('./node');
 
 class LinkedList {
     constructor() {
-      this.head = null;
-      this.tail = null;
+      this._head = null;
+      this._tail = null;
       this.length = 0;
     }
 
@@ -11,30 +11,30 @@ class LinkedList {
       var node = new Node(data);
 
       if(this.length == 0){
-        this.head = node;
-        this.tail = node;
+        this._head = node;
+        this._tail = node;
       }
       else{
-        this.tail.next = node;
-        node.prev = this.tail;
-        this.tail = node;
+        this._tail.next = node;
+        node.prev = this._tail;
+        this._tail = node;
       }
       this.length++;
       return this;
     }
 
     head() {
-     if(!this.head){
+     if(!this._head){
        return null;
      }
-     return this.head.data;
+     return this._head.data;
     }
 
     tail() {
-      if(!this.tail){
+      if(!this._tail){
         return null;
       }
-      return this.tail.data;
+      return this._tail.data;
     }
 
     at(index) {}
@@ -42,15 +42,15 @@ class LinkedList {
     insertAt(index, data) {}
 
     isEmpty() {
-      if{this.length == 0}{
+      if(this.length == 0){
         return true;
       }
       return false;
     }
 
     clear() {
-      this.head = null;
-      this.tail = null;
+      this._head = null;
+      this._tail = null;
       this.length = 0;
        return this;
     }
