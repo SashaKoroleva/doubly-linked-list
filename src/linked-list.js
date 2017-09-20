@@ -47,7 +47,38 @@ class LinkedList {
   }
 
     insertAt(index, data) {
+      if(index>=0 && index<=this.length){
+        var node = new Node(data);
+        var count = 0;
+        var current = this._head;
 
+        if(index == 0){
+          this._head = node;
+          node.next = current;
+          current.prev = node;
+        }
+        else if(index == this.length){
+          current = this._tail;
+          this._tail = node;
+          node.prev = current;
+          current.next = node;
+        }
+        else{
+          while(count++ < index){
+            current = current.next;
+          }
+          node.next = current;
+          node.prev = current.prev;
+          current.prev.next = node;
+          current.prev = node;
+          /*node.next = current.next;
+          node.prev = current;
+          current.next.prev = node;
+          current.next = node;*/
+        }
+        this.length++;
+      }
+      else {return "error";}
     }
 
     isEmpty() {
@@ -92,7 +123,7 @@ class LinkedList {
         }
         this.length--;
       }
-      else { return false;}
+      else { return "error";}
     }
 
     reverse() {}
