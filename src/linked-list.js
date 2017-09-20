@@ -20,7 +20,6 @@ class LinkedList {
         this._tail = node;
       }
       this.length++;
-      //return this;
     }
 
     head() {
@@ -92,7 +91,6 @@ class LinkedList {
       this._head = null;
       this._tail = null;
       this.length = 0;
-       //return this;
     }
 
     deleteAt(index) {
@@ -106,7 +104,6 @@ class LinkedList {
           if(this.length == 1){
             this._head = null;
             this._tail = null;
-            this.length = 0;
           }
         }
         else if(index == this.length -1){
@@ -126,7 +123,22 @@ class LinkedList {
       else { return "error";}
     }
 
-    reverse() {}
+    reverse() {
+
+      var save;
+      var count = this.length;
+
+      var current = this._head;
+      this._head = this._tail;
+      this._tail = current;
+
+       while(current){
+         save = current.next;
+         current.next = current.prev;
+         current.prev = save;
+         current = current.prev;
+       }
+    }
 
     indexOf(data) {
       var count = 0;
