@@ -20,7 +20,7 @@ class LinkedList {
         this._tail = node;
       }
       this.length++;
-      return this;
+      //return this;
     }
 
     head() {
@@ -37,7 +37,14 @@ class LinkedList {
       return this._tail.data;
     }
 
-    at(index) {}
+    at(index) {
+      var count = 0;
+      var current = this._head;
+      while(count++ < index){
+      current = current.next;
+      }
+      return current.data;
+  }
 
     insertAt(index, data) {}
 
@@ -52,11 +59,38 @@ class LinkedList {
       this._head = null;
       this._tail = null;
       this.length = 0;
-       return this;
+       //return this;
     }
 
     deleteAt(index) {
+      if(index>=0 && index<this.length && this.length != 0){
 
+        var current = this._head;
+        var count = 0;
+
+        if(index == 0){
+          this._head = current.next;
+          if(this.length == 1){
+            this._head = null;
+            this._tail = null;
+            this.length = 0;
+          }
+        }
+        else if(index == this.length -1){
+          current = this._tail;
+          this._tail = current.prev;
+          this._tail.next = null;
+        }
+        else{
+            while(count++ < index){
+              current = current.next;
+            }
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+        this.length--;
+      }
+      else { return false;}
     }
 
     reverse() {}
