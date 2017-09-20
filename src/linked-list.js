@@ -46,7 +46,9 @@ class LinkedList {
       return current.data;
   }
 
-    insertAt(index, data) {}
+    insertAt(index, data) {
+
+    }
 
     isEmpty() {
       if(this.length == 0){
@@ -95,7 +97,18 @@ class LinkedList {
 
     reverse() {}
 
-    indexOf(data) {}
+    indexOf(data) {
+      var count = 0;
+      var current = this._head;
+      while(count<this.length && current.data != data){
+        count++;
+        current = current.next;
+      }
+      if(count==this.length){
+        return -1;
+      }
+      else {return count;}
+    }
 }
 
 module.exports = LinkedList;
